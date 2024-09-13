@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { BASIC_AUTH_TOKEN } from '~/lib/constants'
+import { ENCODED_CREDENTIALS } from '~/lib/constants'
 import { ky } from '~/lib/ky-with-auth'
 import type { SignInFormSchema } from '~/lib/schema'
 import type { ResAuthUser } from '~/types/response'
@@ -11,9 +11,9 @@ export function useSignInMutation() {
   return useMutation({
     mutationKey: ['sign-in'],
     mutationFn: async ({ username, password }: SignInFormSchema) => {
-      const basicAuthToken = btoa(`${username}:${password}`)
+      const encodedCredentials = btoa(`${username}:${password}`)
 
-      sessionStorage.setItem(BASIC_AUTH_TOKEN, basicAuthToken)
+      sessionStorage.setItem(ENCODED_CREDENTIALS, encodedCredentials)
 
       return ky.get('auth/user').json<ResAuthUser>()
     },
@@ -22,7 +22,7 @@ export function useSignInMutation() {
     },
     onError() {
       queryClient.setQueryData(['user'], null)
-      sessionStorage.removeItem(BASIC_AUTH_TOKEN)
+      sessionStorage.removeItem(ENCODED_CREDENTIALS)
     },
     retry: false,
   })

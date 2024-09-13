@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
 import { userQueryOptions, useUserQuery } from '~/api/user-query'
-import { BASIC_AUTH_TOKEN } from '~/lib/constants'
+import { ENCODED_CREDENTIALS } from '~/lib/constants'
 import { router } from '~/lib/router'
 import type { ResAuthUser } from '~/types/response'
 
@@ -32,7 +32,7 @@ function useAuth(): AuthData {
       router.navigate({ to: '/sign-in' })
     },
     signOut: () => {
-      sessionStorage.removeItem(BASIC_AUTH_TOKEN)
+      sessionStorage.removeItem(ENCODED_CREDENTIALS)
       queryClient.setQueryData(['user'], null)
     },
     ensureData: () => {

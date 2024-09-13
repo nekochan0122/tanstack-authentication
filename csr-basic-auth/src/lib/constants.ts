@@ -1,1 +1,1 @@
-export const BASIC_AUTH_TOKEN = 'basic-auth-token'
+export const ENCODED_CREDENTIALS = 'encoded-credentials'
