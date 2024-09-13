@@ -5,11 +5,11 @@ import { ky } from '~/lib/ky-with-auth'
 import type { SignInFormSchema } from '~/lib/schema'
 import type { ResAuthUser } from '~/types/response'
 
-export function useSignInMutation() {
+export function useUserMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationKey: ['sign-in'],
+    mutationKey: ['user-mutation-for-sign-in'],
     mutationFn: async ({ username, password }: SignInFormSchema) => {
       const encodedCredentials = btoa(`${username}:${password}`)
 
