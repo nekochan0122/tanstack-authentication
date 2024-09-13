@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { FormEvent } from 'react'
 
-import { useSignInMutation } from '~/api/use-sign-in-mutation'
+import { useSignInMutation } from '~/api/sign-in-mutation'
 import { signInFormSchema } from '~/lib/schema'
 
 export const Route = createFileRoute('/_auth/sign-in')({

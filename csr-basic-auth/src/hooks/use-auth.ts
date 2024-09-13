@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
-import { userQueryOptions, useUserQuery } from '~/api/use-user-query'
+import { userQueryOptions, useUserQuery } from '~/api/user-query'
 import { BASIC_AUTH_TOKEN } from '~/lib/constants'
 import { router } from '~/lib/router'
 import type { ResAuthUser } from '~/types/response'
