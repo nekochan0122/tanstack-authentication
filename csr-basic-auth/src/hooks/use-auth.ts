@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
-import { userQueryOptions, useUserQuery } from '~/api/user-query'
+import { authOptions, useAuthQuery } from '~/api/auth-query'
 import { ENCODED_CREDENTIALS } from '~/lib/constants'
 import { router } from '~/lib/router'
 import type { ResAuthUser } from '~/types/response'
@@ -20,7 +20,7 @@ type AuthUtils = {
 type AuthData = AuthState & AuthUtils
 
 function useAuth(): AuthData {
-  const userQuery = useUserQuery()
+  const userQuery = useAuthQuery()
   const queryClient = useQueryClient()
 
   useEffect(() => {
@@ -33,11 +33,11 @@ function useAuth(): AuthData {
     },
     signOut: () => {
       sessionStorage.removeItem(ENCODED_CREDENTIALS)
-      queryClient.setQueryData(['user'], null)
+      queryClient.setQueryData(['auth'], null)
     },
     ensureData: () => {
       return queryClient.ensureQueryData(
-        userQueryOptions(),
+        authOptions(),
       )
     },
   }

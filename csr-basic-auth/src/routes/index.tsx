@@ -11,7 +11,7 @@ function HomeComponent() {
 
   return (
     <>
-      <h3>Welcome {auth.user?.username || 'Guest'}!</h3>
+      <h3>Welcome {auth.user?.name || 'Guest'}!</h3>
     </>
   )
 }

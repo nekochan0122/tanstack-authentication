@@ -20,9 +20,9 @@ app.use(
   }),
 )
 
-app.get('/auth/user', async (c) => {
+app.get('/auth', async (c) => {
   return c.json({
-    username: 'John Doe',
+    name: 'John Doe',
   })
 })
 

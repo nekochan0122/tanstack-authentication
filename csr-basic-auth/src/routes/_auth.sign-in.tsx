@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { FormEvent } from 'react'
 
-import { useUserMutation } from '~/api/user-mutation'
+import { useAuthMutation } from '~/api/auth-mutation'
 import { signInFormSchema } from '~/lib/schema'
 
 export const Route = createFileRoute('/_auth/sign-in')({
@@ -9,7 +9,7 @@ export const Route = createFileRoute('/_auth/sign-in')({
 })
 
 function SignInComponent() {
-  const userMutation = useUserMutation()
+  const userMutation = useAuthMutation()
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()

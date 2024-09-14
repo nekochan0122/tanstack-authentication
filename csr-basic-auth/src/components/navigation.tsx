@@ -51,7 +51,7 @@ export function Navigation() {
         <div className='flex gap-2'>
           <button onClick={auth.signOut}>Sign Out</button>
           <p> | </p>
-          <div>Welcome back, {auth.user.username}</div>
+          <div>Welcome back, {auth.user.name}</div>
         </div>
       )}
     </header>

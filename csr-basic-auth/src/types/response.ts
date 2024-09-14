@@ -1,3 +1,3 @@
 export type ResAuthUser = {
-  username: string
+  name: string
 }
